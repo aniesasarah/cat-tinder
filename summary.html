@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Favourite Kitties</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>❤️ Your Favourite Kitties</h1>
+    <p id="count"></p>
+  </header>
+  <main id="liked-cats" style="display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"></main>
+
+  <script>
+    const likedCats = JSON.parse(localStorage.getItem('likedCats')) || [];
+    document.getElementById('count').innerText = `You liked ${likedCats.length} cats`;
+    const container = document.getElementById('liked-cats');
+    likedCats.forEach(url => {
+      const img = document.createElement('img');
+      img.src = url;
+      img.style.width = '100%';
+      img.style.borderRadius = '8px';
+      container.appendChild(img);
+    });
+  </script>
+</body>
+</html>
